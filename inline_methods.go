@@ -1,8 +1,8 @@
-package inline
+package telegram
 
 import "encoding/json"
 
-// AnswerInlineQuery
+// AnswerInlineQuery represents the answer of inline query.
 type AnswerInlineQuery struct {
 	InlineQueryID     string          `json:"inline_query_id"`     // Unique identifier for the answered query
 	Results           json.RawMessage `json:"results"`             // A JSON-serialized array of results for the inline query

@@ -1,6 +1,4 @@
-package payments
-
-import "github.com/hellowearemito/go-telegram-structs/types"
+package telegram
 
 // LabeledPrice : This object represents a portion of the price for goods or services.
 type LabeledPrice struct {
@@ -56,7 +54,7 @@ type SuccessfulPayment struct {
 // ShippingQuery : This object contains information about an incoming shipping query.
 type ShippingQuery struct {
 	ID              string          `json:"id"`               // Unique query identifier
-	From            types.User      `json:"from"`             // User who sent the query
+	From            User            `json:"from"`             // User who sent the query
 	InvoicePayload  string          `json:"invoice_payload"`  // Bot specified invoice payload
 	ShippingAddress ShippingAddress `json:"shipping_address"` // User specified shipping address
 }
@@ -64,7 +62,7 @@ type ShippingQuery struct {
 // PreCheckoutQuery : This object contains information about an incoming pre-checkout query.
 type PreCheckoutQuery struct {
 	ID               string     `json:"id"`                 // Unique query identifier
-	From             types.User `json:"from"`               // User who sent the query
+	From             User       `json:"from"`               // User who sent the query
 	Currency         string     `json:"currency"`           // Three-letter ISO 4217 currency code
 	TotalAmount      int64      `json:"total_amount"`       // Total price in the smallest units of the currency (integer, not float/double). For example, for a price of US$ 1.45 pass amount = 145. See the exp parameter in currencies.json, it shows the number of digits past the decimal point for each currency (2 for the majority of currencies).
 	InvoicePayload   string     `json:"invoice_payload"`    // Bot specified invoice payload

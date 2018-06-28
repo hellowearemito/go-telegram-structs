@@ -1,4 +1,4 @@
-package types
+package telegram
 
 // User represents a Telegram user or bot.
 type User struct {

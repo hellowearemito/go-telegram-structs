@@ -1,7 +1,7 @@
-package types
+package telegram
 
 // InputMedia represents the content of a media message to be sent. It should be one of InputMediaPhoto or InputMediaVideo
-type InputMedia interface {}
+type InputMedia interface{}
 
 // InputMediaPhoto represents a photo to be sent.
 type InputMediaPhoto struct {

@@ -1,6 +1,4 @@
-package inline
-
-import "github.com/hellowearemito/go-telegram-structs/types"
+package telegram
 
 // InputMessageContent epresents the content of a message to be sent as a result of an inline query. Telegram clients currently support the following 4 types: InputTextMessageContent, InputLocationMessageContent, InputVenueMessageContent, InputContactMessageContent
 type InputMessageContent interface{}
@@ -37,9 +35,9 @@ type InputContactMessageContent struct {
 
 // ChosenInlineResult represents a result of an inline query that was chosen by the user and sent to their chat partner.
 type ChosenInlineResult struct {
-	ResultID        string          `json:"result_id"`         // The unique identifier for the result that was chosen
-	From            types.User      `json:"from"`              // The user that chose the result
-	Location        *types.Location `json:"location"`          // Optional. Sender location, only for bots that require user location
-	InlineMessageID *string         `json:"inline_message_id"` // Optional. Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message. Will be also received in callback queries and can be used to edit the message.
-	Query           string          `json:"query"`             // The query that was used to obtain the result
+	ResultID        string    `json:"result_id"`         // The unique identifier for the result that was chosen
+	From            User      `json:"from"`              // The user that chose the result
+	Location        *Location `json:"location"`          // Optional. Sender location, only for bots that require user location
+	InlineMessageID *string   `json:"inline_message_id"` // Optional. Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message. Will be also received in callback queries and can be used to edit the message.
+	Query           string    `json:"query"`             // The query that was used to obtain the result
 }

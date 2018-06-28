@@ -1,12 +1,15 @@
-package types
+package telegram
 
 const (
+	// Private is a constant of private chat type.
 	Private = "private"
+	// Group is a constant of group chat type.
 	Group = "group"
+	// Supergroup is a constant of supergroup type.
 	Supergroup = "supergroup"
+	// Channel is a constant of channel type.
 	Channel = "channel"
 )
-
 
 // Chat represents a chat.
 type Chat struct {
@@ -32,11 +35,17 @@ type ChatPhoto struct {
 }
 
 const (
+	// Creator is a constant of chat's member status.
 	Creator = "creator"
+	// Administrator is a constant of chat' member status.
 	Administrator = "administrator"
+	// Member is a constant of chat's member status.
 	Member = "member"
+	// Restricted is a constant of chat's member status.
 	Restricted = "restricted"
+	// Left is a constant of chat's member status.
 	Left = "left"
+	// Kicked is a constant of chat's member status.
 	Kicked = "kicked"
 )
 

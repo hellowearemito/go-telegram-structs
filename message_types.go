@@ -1,16 +1,10 @@
-package types
-
-import (
-	"github.com/hellowearemito/go-telegram-structs/games"
-	"github.com/hellowearemito/go-telegram-structs/payments"
-	"github.com/hellowearemito/go-telegram-structs/stickers"
-)
+package telegram
 
 // Message represents a message.
 type Message struct {
 	MessageID             int64              `json:"message_id"`              // Unique message identifier inside this chat
 	From                  *User              `json:"from"`                    // Optional. Sender, empty for messages sent to channels
-	Date                  int64              `json:"date""`                   // Date the message was sent in Unix time
+	Date                  int64              `json:"date"`                    // Date the message was sent in Unix time
 	Chat                  Chat               `json:"chat"`                    // Conversation the message belongs to
 	ForwardFrom           *User              `json:"forward_from"`            // Optional. For forwarded messages, sender of the original message
 	ForwardFromChat       *Chat              `json:"forward_from_chat"`       // Optional. For messages forwarded from channels, information about the original channel
@@ -22,13 +16,13 @@ type Message struct {
 	MediaGroupID          *string            `json:"media_group_id"`          // Optional. The unique identifier of a media message group this message belongs to
 	AuthorSignature       *string            `json:"author_signature"`        // Optional. Signature of the post author for messages in channels
 	Text                  *string            `json:"text"`                    // Optional. For text messages, the actual UTF-8 text of the message, 0-4096 characters.
-	Entities              []MessageEntity     `json:"entities"`                // Optional. For text messages, special entities like usernames, URLs, bot commands, etc. that appear in the text
-	CaptionEntities       []MessageEntity     `json:"caption_entities"`        // Optional. For messages with a caption, special entities like usernames, URLs, bot commands, etc. that appear in the caption
+	Entities              []MessageEntity    `json:"entities"`                // Optional. For text messages, special entities like usernames, URLs, bot commands, etc. that appear in the text
+	CaptionEntities       []MessageEntity    `json:"caption_entities"`        // Optional. For messages with a caption, special entities like usernames, URLs, bot commands, etc. that appear in the caption
 	Audio                 *Audio             `json:"audio"`                   // Optional. Message is an audio file, information about the file
 	Document              *Document          `json:"document"`                // Optional. Message is a general file, information about the file
-	Game                  *games.Game              `json:"game"`                    // Optional. Message is a game, information about the game.
-	Photo                 []PhotoSize             `json:"photo"`                   // Optional. Message is a photo, available sizes of the photo
-	Sticker               *stickers.Sticker           `json:"sticker"`                 // Optional. Message is a sticker, information about the sticker
+	Game                  *Game              `json:"game"`                    // Optional. Message is a game, information about the game.
+	Photo                 []PhotoSize        `json:"photo"`                   // Optional. Message is a photo, available sizes of the photo
+	Sticker               *Sticker           `json:"sticker"`                 // Optional. Message is a sticker, information about the sticker
 	Video                 *Video             `json:"video"`                   // Optional. Message is a video, information about the video
 	Voice                 *Voice             `json:"voice"`                   // Optional. Message is a voice message, information about the file
 	VideoNote             *VideoNote         `json:"video_note"`              // Optional. Message is a video note, information about the video message
@@ -47,23 +41,33 @@ type Message struct {
 	MigrateToChatID       *int64             `json:"migrate_to_chat_id"`      // Optional. The group has been migrated to a supergroup with the specified identifier. This number may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier.
 	MigrateFromChatID     *int64             `json:"migrate_from_chat_id"`    // Optional. The group has been migrated to a supergroup with the specified identifier. This number may be greater than 32 bits and some programming languages may have difficulty/silent defects in interpreting it. But it is smaller than 52 bits, so a signed 64 bit integer or double-precision float type are safe for storing this identifier.
 	PinnedMessage         *Message           `json:"pinned_message"`          // Optional. Specified message was pinned. Note that the Message object in this field will not contain further reply_to_message fields even if it is itself a reply.
-	Invoice               *payments.Invoice           `json:"invoice"`                 // Optional. Message is an invoice for a payment, information about the invoice. More about payments »
-	SuccessfulPayment     *payments.SuccessfulPayment `json:"successful_payment"`      // Optional. Message is a service message about a successful payment, information about the payment.
+	Invoice               *Invoice           `json:"invoice"`                 // Optional. Message is an invoice for a payment, information about the invoice. More about payments »
+	SuccessfulPayment     *SuccessfulPayment `json:"successful_payment"`      // Optional. Message is a service message about a successful payment, information about the payment.
 	ConnectedWebsite      *string            `json:"connected_website"`       // Optional. The domain name of the website on which the user has logged in.
 }
 
 const (
+	// Hashtag is a type of message entity.
 	Hashtag = "hashtag"
+	// BotCommand is a type of message entity.
 	BotCommand = "bot_command"
+	// Url is a type of message entity.
 	Url = "url"
+	// Email is a type of message entity.
 	Email = "email"
+	// Bold is a type of message entity.
 	Bold = "bold"
+	// Italic is a type of message entity.
 	Italic = "italic"
+	// Code is a type of message entity.
 	Code = "code"
+	// Pre is a type of message entity.
 	Pre = "pre"
+	// TextLink is a type of message entity.
 	TextLink = "text_link"
+	// TextMention is a type of message entity.
 	TextMention = "text_mention"
-	)
+)
 
 // MessageEntity represents one special entity in a text message. For example, hashtags, usernames, URLs, etc.
 type MessageEntity struct {
@@ -163,5 +167,3 @@ type File struct {
 	FileSize *int64  `json:"file_size"` // Optional. File size, if known
 	FilePath *string `json:"file_path"` // Optional. File path. Use https://api.telegram.org/file/bot<token>/<file_path> to get the file.
 }
-
-//

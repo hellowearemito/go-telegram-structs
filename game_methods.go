@@ -1,14 +1,12 @@
-package games
-
-import "github.com/hellowearemito/go-telegram-structs/types"
+package telegram
 
 // SendGame : Use this method to send a game. On success, the sent Message is returned.
 type SendGame struct {
-	ChatID              int64                       `json:"chat_id"`              // Unique identifier for the target chat
-	GameShortName       string                      `json:"game_short_name"`      // Short name of the game, serves as the unique identifier for the game. Set up your games via Botfather.
-	DisableNotification *bool                       `json:"disable_notification"` // Sends the message silently. Users will receive a notification with no sound.
-	ReplyToMessageID    *int64                      `json:"reply_to_message_id"`  // If the message is a reply, ID of the original message
-	ReplyMarkup         *types.InlineKeyboardMarkup `json:"reply_markup"`         // A JSON-serialized object for an inline keyboard. If empty, one ‘Play game_title’ button will be shown. If not empty, the first button must launch the game.
+	ChatID              int64                 `json:"chat_id"`              // Unique identifier for the target chat
+	GameShortName       string                `json:"game_short_name"`      // Short name of the game, serves as the unique identifier for the game. Set up your games via Botfather.
+	DisableNotification *bool                 `json:"disable_notification"` // Sends the message silently. Users will receive a notification with no sound.
+	ReplyToMessageID    *int64                `json:"reply_to_message_id"`  // If the message is a reply, ID of the original message
+	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup"`         // A JSON-serialized object for an inline keyboard. If empty, one ‘Play game_title’ button will be shown. If not empty, the first button must launch the game.
 }
 
 // SetGameScore : Use this method to set the score of the specified user in a game. On success, if the message was sent by the bot, returns the edited Message, otherwise returns True. Returns an error, if the new score is not greater than the user's current score in the chat and force is False.

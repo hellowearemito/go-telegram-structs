@@ -1,22 +1,20 @@
-package inline
-
-import "github.com/hellowearemito/go-telegram-structs/types"
+package telegram
 
 // Query represents an incoming inline query. When the user sends an empty query, your bot could return some default or trending results.
 type Query struct {
-	ID       string          `json:"id"`       // Unique identifier for this query
-	From     types.User      `json:"from"`     // Sender
-	Location *types.Location `json:"location"` // Optional. Sender location, only for bots that request user location
-	Query    string          `json:"query"`    // Text of the query (up to 512 characters)
-	Offset   string          `json:"offset"`   // Offset of the results to be returned, can be controlled by the bot
+	ID       string    `json:"id"`       // Unique identifier for this query
+	From     User      `json:"from"`     // Sender
+	Location *Location `json:"location"` // Optional. Sender location, only for bots that request user location
+	Query    string    `json:"query"`    // Text of the query (up to 512 characters)
+	Offset   string    `json:"offset"`   // Offset of the results to be returned, can be controlled by the bot
 }
 
 // BaseResult represents the basic result structure.
 type BaseResult struct {
-	Type                string                      `json:"type"`                  // Type of the result
-	ID                  string                      `json:"id"`                    // Unique identifier for this result, 1-64 Bytes
-	InputMessageContent InputMessageContent         `json:"input_message_content"` // Content of the message to be sent
-	ReplyMarkup         *types.InlineKeyboardMarkup `json:"reply_markup"`          // Optional. Inline keyboard attached to the message
+	Type                string                `json:"type"`                  // Type of the result
+	ID                  string                `json:"id"`                    // Unique identifier for this result, 1-64 Bytes
+	InputMessageContent InputMessageContent   `json:"input_message_content"` // Content of the message to be sent
+	ReplyMarkup         *InlineKeyboardMarkup `json:"reply_markup"`          // Optional. Inline keyboard attached to the message
 }
 
 // BaseResultWithCaption represents the basic result with captions fields.
@@ -151,10 +149,10 @@ type ResultContact struct {
 
 // ResultGame represents a Game.
 type ResultGame struct {
-	Type          string                      `json:"type"`            // Type of the result
-	ID            string                      `json:"id"`              // Unique identifier for this result, 1-64 Bytes
-	GameShortName string                      `json:"game_short_name"` // Short name of the game
-	ReplyMarkup   *types.InlineKeyboardMarkup `json:"reply_markup"`    // Optional. Inline keyboard attached to the message
+	Type          string                `json:"type"`            // Type of the result
+	ID            string                `json:"id"`              // Unique identifier for this result, 1-64 Bytes
+	GameShortName string                `json:"game_short_name"` // Short name of the game
+	ReplyMarkup   *InlineKeyboardMarkup `json:"reply_markup"`    // Optional. Inline keyboard attached to the message
 }
 
 // ResultCachedPhoto represents a link to a photo stored on the Telegram servers. By default, this photo will be sent by the user with an optional caption. Alternatively, you can use input_message_content to send a message with the specified content instead of the photo.
