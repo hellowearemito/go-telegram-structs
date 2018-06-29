@@ -1,8 +1,26 @@
 package telegram
 
+const (
+	TextType              string = "text"
+	AudioType             string = "audio"
+	VideoType             string = "video"
+	DocumentType          string = "document"
+	GameType              string = "game"
+	PhotoType             string = "photo"
+	StickerType           string = "sticker"
+	VoiceType             string = "voice"
+	VideoNoteType         string = "video_note"
+	ContactType           string = "contact"
+	LocationType          string = "location"
+	VenueType             string = "venue"
+	InvoiceType           string = "invoice"
+	SuccessfulPaymentType string = "successful_payment"
+)
+
 // Message represents a message.
 type Message struct {
-	MessageID             int64              `json:"message_id"`              // Unique message identifier inside this chat
+	MessageID             int64              `json:"message_id"` // Unique message identifier inside this chat
+	Type                  string             // Type is a extra field for decoder. We save the type of message to the field.
 	From                  *User              `json:"from"`                    // Optional. Sender, empty for messages sent to channels
 	Date                  int64              `json:"date"`                    // Date the message was sent in Unix time
 	Chat                  Chat               `json:"chat"`                    // Conversation the message belongs to
